@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Google+Sans:400,500,600");
+@import url("./DropDown.css");
+@import url("./Header.css");
+@import url("./Card.css");
+
+body {
+  margin: 0;
+  background-color: lightgray;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Google Sans";
+  font-size: 14px;
+  height: 100vh;
+  margin: 0 auto;
+  outline: 1px solid black;
+  width: 100%;
+}
+
+.listview-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 12px;
+  height: 100%;
+}

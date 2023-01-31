@@ -1,0 +1,89 @@
+.business-image {
+  width: 120px;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.business-card {
+  padding: 14px;
+  border-radius: 6px;
+  width: 90%;
+  margin: 0 14px;
+}
+
+.business-description {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.business-details {
+  display: flex;
+}
+
+h3,
+p {
+  margin: 0;
+}
+
+.business-name {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.business-address{
+  padding-top: 10px;
+  color: rgb(130, 130, 130);
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.business-types .selected {
+  font-size: 16px;
+  font-weight: 900;
+  color: #f1af33;
+}
+
+.business-specs {
+  align-items: center;
+  background-color: #edf5dd;
+  color: rgb(84, 74, 74);
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  padding: 4px 8px;
+}
+
+.business-specs label {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 900;
+  color: inherit;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.rating {
+  display: flex;
+  margin-bottom: auto;
+}
+
+.star,
+.star-filled {
+  height: 16px;
+  width: 16px;
+}
+
+.star {
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTEyIDE3LjI3TDE4LjE4IDIxbC0xLjY0LTcuMDNMMjIgOS4yNGwtNy4xOS0uNjFMMTIgMiA5LjE5IDguNjMgMiA5LjI0bDUuNDYgNC43M0w1LjgyIDIxeiIgZmlsbD0iI2RkZGRkZCIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
+}
+
+.star-filled {
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTEyIDE3LjI3TDE4LjE4IDIxbC0xLjY0LTcuMDNMMjIgOS4yNGwtNy4xOS0uNjFMMTIgMiA5LjE5IDguNjMgMiA5LjI0bDUuNDYgNC43M0w1LjgyIDIxeiIgZmlsbD0iI0YyQzk0QyIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
+}
