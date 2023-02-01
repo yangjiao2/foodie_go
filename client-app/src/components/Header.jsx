@@ -2,6 +2,14 @@ import DropDown from "./DropDown";
 import { gql, useQuery } from "@apollo/client";
 import React, { useMemo } from "react";
 
+export const GET_CATEGORIES = gql`
+{
+  categories {
+    title
+  }
+}
+`;
+
 /**
  * Renders a header element.
  * @param {Function} setCategories - A callback to update the selected business category.
@@ -11,35 +19,19 @@ import React, { useMemo } from "react";
  * @return {!React.ReactElement}
  */
 
-const GET_CATEGORIES = gql`
-{
-  categories {
-    title
-  }
-}
-`;
-
-
 const Header = ({
-  // typeOptions,
-  // sortOptions,
   category,
-  location,
   setCategories,
-  setLocation,
 }) => {
-  // const onResetClick = () => {
-  //   setChargeId(0);
-  //   setSortValue(0);
-  // };
 
   const { loading, error, data } = useQuery(GET_CATEGORIES);
   // const { data: categories } = data;
-  console.log('header', data);
-
-
+  console.log('header', data, loading, error);
+  if (loading) {
+    return <span></span>;
+  }
   return (
-    <div className="header-container">
+    <div className="header-container" data-testid="header-container">
       <DropDown
         value={category}
         setSelected={setCategories}

@@ -3,49 +3,9 @@ const fetch = require("node-fetch");
 const apiKey = "Bearer " + process.env.YELP_API_KEY;
 
 function gqlSearchRestaurants(term, location) {
-  const loc = `location: "${location}"`;
+  const queryLocation = `location: "${location}"`;
+  const queryTerm = `term: "${term}"`;
 
-  console.log(
-    "query",
-    `{
-    search(term: "${term}", ${loc}, limit: 30) {
-      restaurants: business {
-        coordinates {
-          latitude
-          longitude
-        }
-        price
-        photos
-        id
-        distance
-        name
-        rating
-        location {
-          city
-          state
-        }
-        hours {
-          open {
-            end
-            start
-            day
-          }
-        }
-        reviews {
-          text
-          rating
-          user {
-            name
-          }
-        }
-        categories {
-            title
-            alias
-        }
-      }
-    }
-  }`
-  );
   return fetch("https://api.yelp.com/v3/graphql", {
     method: "POST",
     headers: {
@@ -54,7 +14,7 @@ function gqlSearchRestaurants(term, location) {
     },
     body: JSON.stringify({
       query: `{
-          search(term: "${term}", ${loc}, limit: 30) {
+          search( ${queryTerm}, ${queryLocation}, limit: 30) {
             restaurants: business {
               coordinates {
                 latitude

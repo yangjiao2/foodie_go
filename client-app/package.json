@@ -21,6 +21,7 @@
     "start": "react-scripts  --openssl-legacy-provider start",
     "build": "react-scripts  --openssl-legacy-provider build",
     "test": "react-scripts test",
+    "test:unit": "jest --testMatch '?(*.)+(spec|test).[tj]s?(x)'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -1,5 +1,4 @@
 const { ApolloServer, gql } = require("apollo-server");
-const axios = require("axios");
 const db = require("./assets/constants");
 const { gqlSearchRestaurants } = require("./service");
 
@@ -22,16 +21,17 @@ const typeDefs = gql`
     alias: String!
   }
   type Query {
-    business: [Business]
+    business(term: String): [Business]
     categories: [Category]
   }
 `;
 
 const resolvers = {
   Query: {
-    business: async () => {
+    business: (parent, args, context) => {
       try {
-        return gqlSearchRestaurants("", "bay area")
+        console.log("argss", args, parent, context);
+        return gqlSearchRestaurants(args.term ?? "", "bay area")
           .then((restaurants) => {
             //   console.log("restaurants", restaurants.data.search.restaurants);
             return restaurants.data.search.restaurants;
@@ -41,7 +41,7 @@ const resolvers = {
         throw error;
       }
     },
-    categories: async () => {
+    categories: () => {
       return db.categories;
     },
   },
@@ -55,14 +55,14 @@ const corsOptions = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  cors: corsOptions,
+  // cors: corsOptions,
 });
 
 console.log(
   gqlSearchRestaurants("bbq", "bay area")
     // .then(ans => console.log(ans));
     .then((restaurants) => {
-      console.log("kig", restaurants.data);
+      // console.log("kig", restaurants.data);
       return restaurants;
     })
     // .then((filteredRestaurants) => res.status(200).json(filteredRestaurants))
@@ -83,4 +83,4 @@ console.log(
 //       .then(filteredRestaurants => res.status(200).json(filteredRestaurants))
 //       .catch(err => console.log(err));
 
-server.listen().then(({ url }) => console.log(`Server ready at ${url}`));
+server.listen().then(({ url }) => console.log(`🚀 Server ready at ${url}`));

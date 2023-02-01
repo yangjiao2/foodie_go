@@ -13,7 +13,7 @@ const DropDown = ({ options, label, setSelected, value }) => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" data-testid="dropdown">
       <label>{label}</label>
       <select
         value={value}
@@ -24,7 +24,8 @@ const DropDown = ({ options, label, setSelected, value }) => {
         <option key={'0'} value={''}>
         </option>
         {options.map((option, index) => (
-          <option key={index} value={option.title}>
+          <option key={index} value={option.title}
+            data-testid={`select-option-${index}`}>
             {option.title}
           </option>
         ))}
