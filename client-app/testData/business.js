@@ -1,8 +1,8 @@
-import { GET_BUSINESS } from "../src/App";
+import { GET_BUSINESS } from "../src/pages/ListView";
 
 const businessData = [
   {
-    request: { query: GET_BUSINESS },
+    request: { query: GET_BUSINESS, variables: { term: "" } },
     result: {
       data: {
         business: [

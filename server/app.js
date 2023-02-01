@@ -68,19 +68,5 @@ console.log(
     // .then((filteredRestaurants) => res.status(200).json(filteredRestaurants))
     .catch((err) => console.log(err))
 );
-// server.post('/api/search/', (req, res, next) => {
-//     const latitude = req.body.latitude;
-//     const longitude = req.body.longitude;
-//     const location = (req.body.location || null);
-//     const term = req.body.term;
-//     const radius = req.body.radius * 1609;
-
-//     gqlSearchRestaurants(latitude, longitude, term, location, radius)
-//     // .then(ans => console.log(ans));
-//       .then(restaurants => {
-//         return res.json(restaurants.data.search.restaurants);
-//       })
-//       .then(filteredRestaurants => res.status(200).json(filteredRestaurants))
-//       .catch(err => console.log(err));
 
 server.listen().then(({ url }) => console.log(`🚀 Server ready at ${url}`));

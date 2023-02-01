@@ -1,18 +1,9 @@
 import React from "react";
-import { fireEvent } from "@testing-library/react";
-// import App from "./App";
-// import Enzyme, { shallow, mount } from "enzyme";
-// // import wait from "waait";
 import userEvent from "@testing-library/user-event";
 import { render, screen, waitFor } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
 import categoryData from "../../testData/category";
-// // test("renders learn react link", () => {
-// //   const { getByText } = render(<App />);
-// //   const linkElement = getByText(/learn react/i);
-// //   expect(linkElement).toBeInTheDocument();
-// // });
-// import { NO_RESULT, LOADING_MESSAGE } from "../src/utils/constants";
+
 import "@testing-library/jest-dom";
 import Header from "../components/Header";
 
@@ -36,8 +27,22 @@ describe("Test <Header/> component", () => {
     render(initProvider());
   });
 
+  it("renders <Header /> components", async () => {
+    render(initProvider());
+
+    await waitFor(() => {
+      //   Expect <Header /> to be rendered by checking data-testid
+      expect(screen.getByTestId("header-container")).not.toBeNull();
+    });
+  });
+
   it("renders <DropDown /> and <select /> components", async () => {
     render(initProvider());
+
+    await waitFor(() => {
+      //   Expect <Header /> to be rendered by checking data-testid
+      expect(screen.getByTestId("header-container")).not.toBeNull();
+    });
 
     await waitFor(() => {
       //   Expect <Dropdown /> to be rendered
@@ -50,14 +55,16 @@ describe("Test <Header/> component", () => {
       expect(screen.getByTestId("dropdown-selection")).not.toBeNull();
     });
 
-    const dropdown = await screen.findByTestId("dropdown-selection");
+    const selection = await screen.findByTestId("dropdown-selection");
     // default option + selectable option count
-    expect(dropdown).toHaveLength(
+    expect(selection).toHaveLength(
       1 + categoryData[0].result.data.categories.length
     );
   });
 
   it("renders <ListView /> correctly with callback upon user select option", async () => {
+    render(initProvider());
+
     const dropdown = await screen.findByTestId("dropdown-selection");
     userEvent.selectOptions(dropdown, screen.getByTestId("select-option-1"));
     const selectValue = categoryData[0].result.data.categories[1].title;

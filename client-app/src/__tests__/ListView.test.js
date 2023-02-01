@@ -1,38 +1,43 @@
 import React from "react";
-import userEvent from "@testing-library/user-event";
 import { render, screen, waitFor } from "@testing-library/react";
 import businessData from "../../testData/business";
-import { NO_RESULT } from "../utils/constants";
 import "@testing-library/jest-dom";
 import ListView from "../pages/ListView";
+import { MockedProvider } from "@apollo/client/testing";
 
 describe("Test <ListView/> component", () => {
-  const initListView = () => (
-    <ListView
-      dataSource={businessData[0].result.data.business}
-      filterCategory={""}
-    ></ListView>
-  );
+  const initProvider = () => {
+    return (
+      <MockedProvider mocks={businessData} addTypename={false}>
+        <ListView filterCategory={""}></ListView>
+      </MockedProvider>
+    );
+  };
+
   it("renders components without errors", async () => {
-    render(initListView());
+    render(initProvider());
   });
 
-  it("should render no result if data source is empty list", async () => {
-    render(<ListView dataSource={[]} filterCategory={""}></ListView>);
-
-    expect(await screen.findByText(NO_RESULT)).toBeInTheDocument();
+  it("renders <ListView /> components", async () => {
+    render(initProvider());
+    await waitFor(() => {
+      //   Expect <ListView /> to be rendered by checking data-testid
+      expect(screen.getByTestId("listview-container")).not.toBeNull();
+    });
   });
 
   it("renders <Card /> components", async () => {
-    const { queryByLabelText, getByLabelText } = render(initListView());
+    render(initProvider());
     await waitFor(() => {
       //   Expect <Card /> component to be rendered by checking data-testid
       expect(screen.getByTestId("card")).not.toBeNull();
     });
+    const dropdown = await screen.findAllByTestId("card");
+    expect(dropdown).toHaveLength(businessData[0].result.data.business.length);
   });
 
   it("renders <Card /> correctly with provided mock dataset", async () => {
-    render(initListView());
+    render(initProvider());
     const mockDataset = businessData[0].result.data.business[0];
     // check <Card /> component renders with correct content
     await waitFor(() => {
