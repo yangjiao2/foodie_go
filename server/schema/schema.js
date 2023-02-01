@@ -1,41 +1,27 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  type Query {
-    getLunchSpin(
-      location: String!
-      categories: String!
-      radius: Float!
-      price: String!
-    ): LunchSpin
-    categories: [Category]
-  }
-  type LunchSpin {
-    lunches: [Business]!
-    winner: Business!
+  type Location {
+    state: String
+    city: String
   }
   type Business {
-    id: String!
-    name: String!
-    url: String!
-    display_phone: String
-    review_count: Int
+    id: String
+    name: String
     rating: Float
     price: String
     location: Location
+    categories: [Category]
     photos: [String]
-    distance: Float
-  }
-  type Location {
-    address1: String
-    city: String
-    state: String
-    postal_code: String
   }
   type Category {
     title: String!
     alias: String!
   }
+  type Query {
+    business(term: String): [Business]
+    categories: [Category]
+  }
 `;
 
-module.exports;
+module.exports = { typeDefs };
