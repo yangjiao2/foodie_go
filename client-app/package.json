@@ -21,7 +21,6 @@
     "start": "react-scripts  --openssl-legacy-provider start",
     "build": "react-scripts  --openssl-legacy-provider build",
     "test": "react-scripts test",
-    "test:unit": "jest --testMatch '?(*.)+(spec|test).[tj]s?(x)'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,9 +43,6 @@
   },
   "devDependencies": {
     "archiver": "^5.0.2",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "enzyme-to-json": "^3.4.4",
     "react-test-renderer": "^18.2.0"
   }
 }
