@@ -49,7 +49,7 @@ yarn start
 
 expect to see `Server ready at http://localhost:4000/`, and server should be ready to server query from sandbox at `http://localhost:4000/` 
 
-![](./demo/server.png)
+![](./demo/server-screenshot.png)
 
 
 - (2) Client setup
@@ -60,7 +60,7 @@ yarn start
 ```
 expect to see `webpack compiled`, and client should be ready to view at `http://localhost:3000/`
 
-![](./demo/clientapp.png)
+![](./demo/client-screenshot.png)
 
 - (3) (Client) Unit test setup
 ```
