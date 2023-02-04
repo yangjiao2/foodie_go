@@ -60,7 +60,7 @@ yarn start
 ```
 expect to see `webpack compiled`, and client should be ready to view at `http://localhost:3000/`
 
-![](./demo/startclient.gif)
+![](./demo/clientapp.png)
 
 - (3) (Client) Unit test setup
 ```
