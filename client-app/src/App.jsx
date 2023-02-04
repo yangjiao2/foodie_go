@@ -1,11 +1,8 @@
 import React, { useState, } from "react";
-import { gql, useQuery } from "@apollo/client";
 import Header from './components/Header';
 import ListView from './pages/ListView';
 
 import "./styles/App.css";
-
-
 
 function App() {
   const [category, setCategories] = useState("");

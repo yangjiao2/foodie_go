@@ -11,7 +11,6 @@ client-app/coverage
 client-app/build
 
 # misc
-client-app/.DS_Store
 client-app/.env.local
 client-app/.env.development.local
 client-app/.env.test.local
@@ -20,3 +19,8 @@ client-app/.env.production.local
 client-app/npm-debug.log*
 client-app/yarn-debug.log*
 client-app/yarn-error.log*
+
+# server/.env
+
+# embeded database
+# server/db/*

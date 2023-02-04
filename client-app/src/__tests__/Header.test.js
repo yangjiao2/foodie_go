@@ -14,8 +14,6 @@ describe("Test <Header/> component", () => {
   }));
 
   const initProvider = () => {
-    console.log("categoryData!", categoryData);
-
     return (
       <MockedProvider mocks={categoryData} addTypename={false}>
         <Header category={""} setCategories={mockSetState} />
@@ -40,22 +38,22 @@ describe("Test <Header/> component", () => {
     render(initProvider());
 
     await waitFor(() => {
-      //   Expect <Header /> to be rendered by checking data-testid
+      //  expect <Header /> to be rendered by checking data-testid
       expect(screen.getByTestId("header-container")).not.toBeNull();
     });
 
     await waitFor(() => {
-      //   Expect <Dropdown /> to be rendered
+      //  expect <Dropdown /> to be rendered
       expect(screen.getByTestId("dropdown")).not.toBeNull();
       // screen.debug();
     });
 
     await waitFor(() => {
-      // Expect <select /> to be rendered
+      // expect <select /> to be rendered
       expect(screen.getByTestId("dropdown-selection")).not.toBeNull();
     });
 
-    const selection = await screen.findByTestId("dropdown-selection");
+    const selection = screen.getByTestId("dropdown-selection");
     // default option + selectable option count
     expect(selection).toHaveLength(
       1 + categoryData[0].result.data.categories.length
@@ -70,6 +68,8 @@ describe("Test <Header/> component", () => {
     const selectValue = categoryData[0].result.data.categories[1].title;
     userEvent.selectOptions(dropdown, selectValue);
 
-    expect(mockSetState).toHaveBeenLastCalledWith(selectValue);
+    await waitFor(() => {
+      expect(mockSetState).toHaveBeenLastCalledWith(selectValue);
+    });
   });
 });

@@ -1,6 +1,8 @@
 import DropDown from "./DropDown";
 import { gql, useQuery } from "@apollo/client";
-import React, { useMemo } from "react";
+import React from "react";
+import { ERROR_MESSAGE } from "../utils/constants";
+
 
 export const GET_CATEGORIES = gql`
 {
@@ -11,11 +13,9 @@ export const GET_CATEGORIES = gql`
 `;
 
 /**
- * Renders a header element.
+ * Renders a header element with selectable dropdown element.
  * @param {Function} setCategories - A callback to update the selected business category.
- * @param {Function} setLocation - A callback to update the location.
- * @param {string} category - The current category.
- * @param {string} location - The current location.
+ * @param {string} category - The filtered business category.
  * @return {!React.ReactElement}
  */
 
@@ -23,14 +23,11 @@ const Header = ({
   category,
   setCategories,
 }) => {
-
-  const { loading, error, data } = useQuery(GET_CATEGORIES);
-  // const { data: categories } = data;
-  console.log('header', data, loading, error);
-  if (loading) {
-    return <span></span>;
+  const { error, loading, data } = useQuery(GET_CATEGORIES);
+  if (error) {
+    return <hr>{ERROR_MESSAGE}</hr>
   }
-  return (
+  return (!loading &&
     <div className="header-container" data-testid="header-container">
       <DropDown
         value={category}
@@ -38,13 +35,6 @@ const Header = ({
         label="Category"
         options={data?.categories ?? []}
       />
-      {/* <DropDown
-        value={sortValue}
-        setSelected={setSortValue}
-        label="Sort"
-        options={sortOptions}
-      /> */}
-      {/* <button onClick={onResetClick}>Reset</button> */}
     </div>
   );
 };

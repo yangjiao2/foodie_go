@@ -17,14 +17,14 @@ const DropDown = ({ options, label, setSelected, value }) => {
       <label>{label}</label>
       <select
         value={value}
-        onChange={(e) => onChange(e)}
+        onChange={onChange}
         className="custom-select"
         data-testid='dropdown-selection'
       >
-        <option key={'0'} value={''}>
+        <option key={0} value={''}>
         </option>
         {options.map((option, index) => (
-          <option key={index} value={option.title}
+          <option key={index + 1} value={option.title}
             data-testid={`select-option-${index}`}>
             {option.title}
           </option>

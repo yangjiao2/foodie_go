@@ -21,7 +21,7 @@ describe("Test <ListView/> component", () => {
   it("renders <ListView /> components", async () => {
     render(initProvider());
     await waitFor(() => {
-      //   Expect <ListView /> to be rendered by checking data-testid
+      //  expect <ListView /> to be rendered by checking data-testid
       expect(screen.getByTestId("listview-container")).not.toBeNull();
     });
   });
@@ -29,7 +29,7 @@ describe("Test <ListView/> component", () => {
   it("renders <Card /> components", async () => {
     render(initProvider());
     await waitFor(() => {
-      //   Expect <Card /> component to be rendered by checking data-testid
+      // expect <Card /> component to be rendered by checking data-testid
       expect(screen.getByTestId("card")).not.toBeNull();
     });
     const dropdown = await screen.findAllByTestId("card");
@@ -45,13 +45,13 @@ describe("Test <ListView/> component", () => {
       expect(cardView).toHaveTextContent(mockDataset.name);
     });
 
-    // check <img /> component renders
+    // check <img /> component renders correctly
     await waitFor(() => {
       const image = screen.getByRole("img");
       expect(image).toBeInTheDocument();
     });
 
-    // check location context renders
+    // check location context renders correctly
     await waitFor(() => {
       const location = [
         mockDataset.location.city,
@@ -61,7 +61,7 @@ describe("Test <ListView/> component", () => {
       expect(businessLoc).toBeInTheDocument();
     });
 
-    // check price context renders
+    // check price context renders correctly
     await waitFor(() => {
       const businessPrice = screen.getByText(
         "Price: ".concat(mockDataset.price)

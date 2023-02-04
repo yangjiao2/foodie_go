@@ -1,5 +1,4 @@
 import Rating from "./Rating";
-import sortResultsByCateogry from "../utils/sortResults";
 
 /**
  * Renders a business card element.
@@ -9,14 +8,13 @@ import sortResultsByCateogry from "../utils/sortResults";
  */
 
 const Card = ({ data, filterCategory }) => {
-  const { name, location, photos, price, rating, categories, distance } = data || {};
-  // console.log(data);
-  // const sortedTypes = sortByTypes(types, filterOption);
+  const { name, location, photos, price, rating, categories } = data || {};
   const image = photos.length > 0 ? photos[0] : null;
   const address = [
     location.city,
     location.state,
   ].join(", ");
+
   return (
     < div className="business-card" data-testid="card">
       <div className="business-details">
@@ -48,10 +46,6 @@ const Card = ({ data, filterCategory }) => {
             </p>
           </div>
         </div>
-
-        {/* <div className="business-distance">
-          <label>Miles: {distance} miles</label>
-        </div> */}
       </div>
     </div >
   );
