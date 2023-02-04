@@ -49,7 +49,7 @@ yarn start
 
 expect to see `Server ready at http://localhost:4000/`, and server should be ready to server query from sandbox at `http://localhost:4000/` 
 
-![](./demo/startserver.gif)
+![](./demo/server.png)
 
 
 - (2) Client setup
@@ -71,6 +71,7 @@ expect to see
 `Test Suites: 3 passed, 3 total ` & `Tests: 9 passed, 9 total`
 
 ![](./demo/unit-test.png)
+
 
 - (4) DB refresh
 ![](./demo/refreshdb.gif)
